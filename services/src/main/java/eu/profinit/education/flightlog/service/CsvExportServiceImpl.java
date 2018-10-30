@@ -20,7 +20,8 @@ public class CsvExportServiceImpl implements CsvExportService {
 
     @Override
     public FileExportTo getAllFlightsAsCsv() {
-        // TODO: Naimplementujte vytváření CSV. Tip: můžete použít Apache Commons CSV - https://commons.apache.org/proper/commons-csv/
+        // TODO: Naimplementujte vytváření CSV.
+        // Tip: můžete použít Apache Commons CSV - https://commons.apache.org/proper/commons-csv/ v příslušných pom.xml naleznete další komentáře s postupem
         throw new NotImplementedException("Not implemented");
     }
 
