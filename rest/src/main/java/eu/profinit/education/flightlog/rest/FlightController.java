@@ -1,0 +1,73 @@
+package eu.profinit.education.flightlog.rest;
+
+import eu.profinit.education.flightlog.exceptions.ExternalSystemException;
+import eu.profinit.education.flightlog.exceptions.FlightLogException;
+import eu.profinit.education.flightlog.exceptions.NotFoundException;
+import eu.profinit.education.flightlog.exceptions.ValidationException;
+import eu.profinit.education.flightlog.service.CsvExportService;
+import eu.profinit.education.flightlog.service.FlightService;
+import eu.profinit.education.flightlog.to.FileExportTo;
+import eu.profinit.education.flightlog.to.FlightTakeoffTo;
+import eu.profinit.education.flightlog.to.FlightTo;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+import static org.springframework.http.ResponseEntity.status;
+
+@RestController
+@RequiredArgsConstructor
+@Slf4j
+public class FlightController {
+
+    private final FlightService flightService;
+    private final CsvExportService csvExportService;
+
+    @RequestMapping("flight/inAir")
+    public List<FlightTo> getFlightInTheAir(){
+        List<FlightTo> flightsInTheAir = flightService.getFlightsInTheAir();
+        log.debug("Flights in the air:\n{}", flightsInTheAir);
+        return flightsInTheAir;
+    }
+
+    @PostMapping("/flight/takeoff")
+    public ResponseEntity takeoff(@RequestBody FlightTakeoffTo start){
+        log.debug("Start\n{}", start);
+
+        flightService.takeoff(start);
+
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    // TODO: Naimplementujte POST metodu pro zadání času přistání
+
+    @RequestMapping("flight/export")
+    public ResponseEntity<byte[]> getCsvExport(){
+        FileExportTo flightsCsv = csvExportService.getAllFlightsAsCsv();
+
+        return ResponseEntity.ok()
+            .contentType(flightsCsv.getContentType())
+            .header("Content-Disposition", "attachment; filename=" + flightsCsv.getFileName())
+            .body(flightsCsv.getContent());
+    }
+
+    @ExceptionHandler({ NotFoundException.class, ValidationException.class})
+    public ResponseEntity<String> handleClientException(FlightLogException e) {
+        return status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    }
+
+    @ExceptionHandler({ ExternalSystemException.class})
+    public ResponseEntity<String> handleExternalSystemException(FlightLogException e) {
+        return status(HttpStatus.SERVICE_UNAVAILABLE).body(e.getMessage());
+    }
+
+
+}
