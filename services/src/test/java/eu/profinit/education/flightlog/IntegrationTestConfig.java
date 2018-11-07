@@ -1,5 +1,6 @@
-package eu.profinit.education.flightlog.domain;
+package eu.profinit.education.flightlog;
 
+import eu.profinit.education.flightlog.domain.DomainConfig;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

@@ -13,6 +13,7 @@ import eu.profinit.education.flightlog.exceptions.ValidationException;
 import eu.profinit.education.flightlog.to.AirplaneTo;
 import eu.profinit.education.flightlog.to.FlightTakeoffTo;
 import eu.profinit.education.flightlog.to.FlightTo;
+import eu.profinit.education.flightlog.to.FlightTuppleTo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -108,6 +109,12 @@ public class FlightServiceImpl implements FlightService {
     public List<FlightTo> getFlightsInTheAir() {
         // TODO: načtěte lete ve vzduchu pomocí vaší nové metody ve FlightRepository
         // Můžete použít Java 8 Stream API pro konverzy na Transfer Object (TO)
+        return new ArrayList<>();
+    }
+
+    @Override
+    public List<FlightTuppleTo> getFlightsForReport() {
+        // TODO: Nactete dvojice letu pro obrazovku report
         return new ArrayList<>();
     }
 }

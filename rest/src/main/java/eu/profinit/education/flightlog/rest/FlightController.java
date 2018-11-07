@@ -9,11 +9,13 @@ import eu.profinit.education.flightlog.service.FlightService;
 import eu.profinit.education.flightlog.to.FileExportTo;
 import eu.profinit.education.flightlog.to.FlightTakeoffTo;
 import eu.profinit.education.flightlog.to.FlightTo;
+import eu.profinit.education.flightlog.to.FlightTuppleTo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,6 +37,12 @@ public class FlightController {
     public List<FlightTo> getFlightInTheAir(){
         List<FlightTo> flightsInTheAir = flightService.getFlightsInTheAir();
         log.debug("Flights in the air:\n{}", flightsInTheAir);
+        return flightsInTheAir;
+    }
+
+    @GetMapping("flight/report")
+    public List<FlightTuppleTo> getFlightReport(){
+        List<FlightTuppleTo> flightsInTheAir = flightService.getFlightsForReport();
         return flightsInTheAir;
     }
 

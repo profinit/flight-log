@@ -1,6 +1,6 @@
 package eu.profinit.education.flightlog.domain.repositories;
 
-import eu.profinit.education.flightlog.domain.IntegrationTestConfig;
+import eu.profinit.education.flightlog.IntegrationTestConfig;
 import eu.profinit.education.flightlog.domain.entities.Flight;
 import org.junit.Ignore;
 import org.junit.Test;

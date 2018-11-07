@@ -3,7 +3,6 @@ package eu.profinit.education.flightlog.dao;
 import eu.profinit.education.flightlog.exceptions.ExternalSystemException;
 import org.apache.commons.lang3.NotImplementedException;
 import org.springframework.context.annotation.Profile;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -25,19 +24,14 @@ public class ClubDatabaseDaoImpl implements ClubDatabaseDao {
 
     @Override
     public List<User> getUsers() {
-
-        ResponseEntity<List<User>> usersResponse;
+        User[] userList;
         try {
-
-            // TODO: implement call to ClubDatabase API using RestTemplate
-            usersResponse = null;
+            // TODO: implementujte tělo volání endpointu ClubDB pomocí REST template
+            userList = null;
             throw new NotImplementedException("Integration is not implemented. Use stub implementation instead");
         } catch (RuntimeException e) {
             throw new ExternalSystemException("Cannot get users from Club database. URL: {}. Call resulted in exception.", e, clubDbBaseUrl);
         }
-//        if (usersResponse.getStatusCode().isError()) {
-//            throw new ExternalSystemException("Cannot get users from Club database. HTTP status: {}", usersResponse.getStatusCode());
-//        }
-//        return usersResponse.getBody();
+        //return Arrays.asList(userList);
     }
 }

@@ -16,8 +16,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
-// TODO: Nastavté správné URL testovacího prostředí ClubDB
-@TestPropertySource(properties = {"integration.clubDb.baseUrl = http://localhost:9000"})
+@TestPropertySource(properties = {"integration.clubDb.baseUrl = http://vyuka.profinit.eu:8080"})
 @ContextConfiguration
 public class ClubDatabaseDaoImplTest {
 

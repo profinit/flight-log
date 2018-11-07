@@ -3,6 +3,7 @@ package eu.profinit.education.flightlog.service;
 import eu.profinit.education.flightlog.domain.entities.FlightId;
 import eu.profinit.education.flightlog.to.FlightTakeoffTo;
 import eu.profinit.education.flightlog.to.FlightTo;
+import eu.profinit.education.flightlog.to.FlightTuppleTo;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -20,4 +21,6 @@ public interface FlightService {
     void land(FlightId flightId, LocalDateTime landingTime);
 
     List<FlightTo> getFlightsInTheAir();
+
+    List<FlightTuppleTo> getFlightsForReport();
 }

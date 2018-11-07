@@ -24,6 +24,9 @@ public class FlightTo implements Serializable {
     private String task;
 
     public static FlightTo fromEntity(Flight entity) {
+        if (entity == null) {
+            return null;
+        }
         return new FlightTo(
             entity.getId().getId(),
             entity.getTakeoffTime(),

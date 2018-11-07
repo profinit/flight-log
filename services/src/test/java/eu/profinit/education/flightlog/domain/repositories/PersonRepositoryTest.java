@@ -1,7 +1,7 @@
 package eu.profinit.education.flightlog.domain.repositories;
 
 
-import eu.profinit.education.flightlog.domain.IntegrationTestConfig;
+import eu.profinit.education.flightlog.IntegrationTestConfig;
 import eu.profinit.education.flightlog.domain.entities.Person;
 import org.junit.Test;
 import org.junit.runner.RunWith;

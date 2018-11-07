@@ -9,4 +9,8 @@ public interface FlightRepository extends JpaRepository<Flight, Long> {
     // Lety by se měly řadit od nejstarších a v případě shody podle ID tak, aby vlečná byla před kluzákem, který táhne
     // Výsledek si můžete ověřit v testu k této tříde v modulu services
 
+
+    // TODO: Vytvorte metodu pro nacteni vlecnych letu pro vytvoreni dvojice letu na obrazovce Report
+
 }
+

@@ -48,7 +48,7 @@ public class FlightLogApplicationTests {
 
         int initialFlightsCount = flightsBefore.size();
         assertTrue("There should be at least one flight", initialFlightsCount >= 1);
-        assertEquals(1, flightsBefore.get(0).get("id"));
+        assertEquals(5, flightsBefore.get(0).get("id"));
 
         String inputJson = readFileToString("landInput.json");
         HttpEntity<String> request = createRequestEntityWithHeaders(inputJson);
