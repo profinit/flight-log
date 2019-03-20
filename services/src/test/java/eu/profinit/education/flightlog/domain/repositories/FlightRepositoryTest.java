@@ -36,8 +36,17 @@ public class FlightRepositoryTest {
 
     @Ignore("Testovana metoda neni implementovana")
     @Test
+    public void shouldLoadGliderFlights() {
+        // TODO 2.2: Zmente volanou testovaci metodu, aby vratila vsechny lety kluzaku a smažte anotaci @Ignore
+        List<Flight> flights = testSubject.findAll();
+
+        assertEquals("There should be 2 glider flights", 2, flights.size());
+    }
+
+    @Ignore("Testovana metoda neni implementovana")
+    @Test
     public void shouldLoadFlightsInTheAir() {
-        // TODO: Doplňte název testované metody a smažte anotaci @Ignore
+        // TODO 2.4: Doplňte název testované metody a smažte anotaci @Ignore
         List<Flight> flights = null;// testSubject.*
 
         assertEquals("There should be 3 flights", 3, flights.size());
@@ -45,4 +54,6 @@ public class FlightRepositoryTest {
         assertEquals("Flight with ID 1 should be second", 1L, flights.get(1).getId().getId().longValue());
         assertEquals("Flight with ID 2 should be third", 2L, flights.get(2).getId().getId().longValue());
     }
+
+
 }

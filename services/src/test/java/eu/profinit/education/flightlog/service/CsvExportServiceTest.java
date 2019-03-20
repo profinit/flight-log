@@ -22,12 +22,12 @@ public class CsvExportServiceTest {
     @Autowired
     private CsvExportService testSubject;
 
-    // TODO: Odstrante anotaci @Ignore, aby se test vykonaval
+    // TODO 6.1: Odstrante anotaci @Ignore, aby se test vykonaval
     @Ignore("Tested method is not implemented yet")
     @Test
     public void testCSVExport() {
         FileExportTo allFlightsAsCsv = testSubject.getAllFlightsAsCsv();
 
-        // TODO: zkontrolujte obsah CSV
+        // TODO 6.2: zkontrolujte obsah CSV
     }
 }

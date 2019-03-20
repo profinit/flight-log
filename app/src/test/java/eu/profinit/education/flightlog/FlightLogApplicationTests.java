@@ -39,7 +39,7 @@ public class FlightLogApplicationTests {
     @Autowired
     private TestRestTemplate restTemplate;
 
-    // TODO: Smažte ignore spusťte test po implementaci FlightService.getFlightsInTheAir
+    // TODO: 2.6 Smažte ignore a spusťte test po implementaci FlightService.getFlightsInTheAir
     @Ignore("Method /flight/inAir is not implemented at service layer")
 	@Test
     public void flightsInAirAndLanding() throws Exception {

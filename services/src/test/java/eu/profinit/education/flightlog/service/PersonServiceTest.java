@@ -92,7 +92,7 @@ public class PersonServiceTest {
     @Ignore("Test is not implemented")
     @Test
     public void shouldCreateNewClubMember() {
-        // TODO: Naimplementujte unit test s pouzitim mocku
+        // TODO 7.1: Naimplementujte unit test s pouzitim mocku
 
     }
 
