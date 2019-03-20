@@ -90,7 +90,16 @@ export class BackendService {
     }
   }
 
-  getFlightReportUrl() {
+  getFlightsForReport(){
+    return this.httpClient.fetch('flight/report')
+      .then(response => response.json())
+      .catch(error => {
+        console.log(error);
+        alert("Cannot fetch flights for the report. Backend connection error.");
+      });
+  }
+
+  getFlightExportUrl() {
     return this.httpClient.baseUrl + 'flight/export';
   }
 
