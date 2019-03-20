@@ -1,5 +1,6 @@
 package eu.profinit.education.flightlog.rest;
 
+import eu.profinit.education.flightlog.domain.entities.FlightId;
 import eu.profinit.education.flightlog.exceptions.ExternalSystemException;
 import eu.profinit.education.flightlog.exceptions.FlightLogException;
 import eu.profinit.education.flightlog.exceptions.NotFoundException;
@@ -7,6 +8,7 @@ import eu.profinit.education.flightlog.exceptions.ValidationException;
 import eu.profinit.education.flightlog.service.CsvExportService;
 import eu.profinit.education.flightlog.service.FlightService;
 import eu.profinit.education.flightlog.to.FileExportTo;
+import eu.profinit.education.flightlog.to.FlightLandingTo;
 import eu.profinit.education.flightlog.to.FlightTakeoffTo;
 import eu.profinit.education.flightlog.to.FlightTo;
 import eu.profinit.education.flightlog.to.FlightTuppleTo;
@@ -55,7 +57,14 @@ public class FlightController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    // TODO: Naimplementujte POST metodu pro zadání času přistání
+    @PostMapping("/flight/land")
+    public ResponseEntity land(@RequestBody FlightLandingTo landing){
+        log.debug("Land\n{}", landing);
+
+        flightService.land(FlightId.of(landing.getFlightId()), landing.getLandingTime());
+
+        return new ResponseEntity(HttpStatus.OK);
+    }
 
     @RequestMapping("flight/export")
     public ResponseEntity<byte[]> getCsvExport(){
