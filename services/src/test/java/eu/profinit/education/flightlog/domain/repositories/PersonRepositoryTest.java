@@ -11,6 +11,7 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
@@ -27,6 +28,18 @@ public class PersonRepositoryTest {
     private PersonRepository testSubject;
 
     private Long testClubMemberId = 1L;
+    private Long testClubMember2Id = 2L;
+
+    @Test
+    public void shouldLoadAllClubMembers() {
+        List<Person> clubMembers = testSubject.findAllByPersonTypeOrderByLastNameAscFirstNameAsc(Person.Type.CLUB_MEMBER);
+
+        assertEquals("There should be 2 club members", 2, clubMembers.size());
+        assertEquals("First Member ID should be 2", testClubMember2Id, clubMembers.get(0).getMemberId());
+        assertEquals("First Member ID should be 1", testClubMemberId, clubMembers.get(1).getMemberId());
+
+
+    }
 
     @Test
     public void shouldFindClubMemberByMemberId() {

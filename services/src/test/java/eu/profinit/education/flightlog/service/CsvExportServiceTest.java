@@ -11,6 +11,10 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.transaction.Transactional;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = IntegrationTestConfig.class)
@@ -25,9 +29,17 @@ public class CsvExportServiceTest {
     // TODO 6.1: Odstrante anotaci @Ignore, aby se test vykonaval
     @Ignore("Tested method is not implemented yet")
     @Test
-    public void testCSVExport() {
+    public void testCSVExport() throws Exception {
         FileExportTo allFlightsAsCsv = testSubject.getAllFlightsAsCsv();
 
-        // TODO 6.2: zkontrolujte obsah CSV
+        String resultContent = new String(allFlightsAsCsv.getContent(), allFlightsAsCsv.getEncoding());
+        String expectedCsv = readFileToString("csv/test_export.csv");
+
+        // TODO 6.2: zkontrolujte obsah CSV - muzete vyuzit pripraveny soubor v src\test\resources\csv\test_export.csv
     }
+
+    private String readFileToString(String fileName) throws IOException, URISyntaxException {
+        return new String(Files.readAllBytes(Paths.get(getClass().getClassLoader().getResource(fileName).toURI())));
+    }
+
 }

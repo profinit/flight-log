@@ -16,6 +16,7 @@ import eu.profinit.education.flightlog.to.FlightTo;
 import eu.profinit.education.flightlog.to.FlightTuppleTo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -23,6 +24,7 @@ import org.springframework.util.Assert;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -30,12 +32,13 @@ import java.util.List;
 @Slf4j
 public class FlightServiceImpl implements FlightService {
 
+    private final int MAX_RECORDS_IN_GUI = 2000;
+
     private final FlightRepository flightRepository;
     private final ClubAirplaneRepository clubAirplaneRepository;
     private final Clock clock;
 
     private final PersonService personService;
-
 
     @Override
     public void takeoff(FlightTakeoffTo flightStart) {
@@ -114,7 +117,8 @@ public class FlightServiceImpl implements FlightService {
 
     @Override
     public List<FlightTuppleTo> getFlightsForReport() {
-        // TODO 8.2: Nactete dvojice letu pro obrazovku report
-        return new ArrayList<>();
+        List<Flight> flights = flightRepository.findAllByLandingTimeNotNullAndFlightTypeOrderByTakeoffTimeDescIdAsc(Flight.Type.TOWPLANE, PageRequest.of(0, MAX_RECORDS_IN_GUI));
+
+        return flights.stream().map(flight -> new FlightTuppleTo(FlightTo.fromEntity(flight), FlightTo.fromEntity(flight.getGliderFlight()))).collect(Collectors.toList());
     }
 }

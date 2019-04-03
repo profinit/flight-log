@@ -10,5 +10,6 @@ public class FileExportTo {
 
     private String fileName;
     private MediaType contentType;
+    private String encoding;
     private byte[] content;
 }
