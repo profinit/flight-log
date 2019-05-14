@@ -34,7 +34,7 @@ public class FlightRepositoryTest {
 
     }
 
-    @Ignore("Testovana metoda neni implementovana")
+    //@Ignore("Testovana metoda neni implementovana")
     @Test
     public void shouldLoadGliderFlights() {
         // TODO 2.2: Zmente volanou testovaci metodu, aby vratila vsechny lety kluzaku a smažte anotaci @Ignore
