@@ -43,7 +43,7 @@ public class FlightRepositoryTest {
         assertEquals("There should be 2 glider flights", 2, flights.size());
     }
 
-    @Ignore("Testovana metoda neni implementovana")
+    //@Ignore("Testovana metoda neni implementovana")
     @Test
     public void shouldLoadFlightsInTheAir() {
         // TODO 2.4: Doplňte název testované metody a smažte anotaci @Ignore
