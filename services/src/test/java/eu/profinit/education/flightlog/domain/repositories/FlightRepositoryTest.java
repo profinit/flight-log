@@ -48,7 +48,7 @@ public class FlightRepositoryTest {
     public void shouldLoadFlightsInTheAir() {
         // TODO 2.4: Doplňte název testované metody a smažte anotaci @Ignore
         List<Flight> flights = null;// testSubject.*
-
+        compilation error
         assertEquals("There should be 3 flights", 3, flights.size());
         assertEquals("Flight with ID 5 started first and should be first", 5L, flights.get(0).getId().getId().longValue());
         assertEquals("Flight with ID 1 should be second", 1L, flights.get(1).getId().getId().longValue());
