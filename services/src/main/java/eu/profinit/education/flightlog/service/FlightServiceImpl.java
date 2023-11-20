@@ -3,6 +3,7 @@ package eu.profinit.education.flightlog.service;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -110,9 +111,10 @@ public class FlightServiceImpl implements FlightService {
     @Transactional(readOnly = true)
     @Override
     public List<FlightTo> getFlightsInTheAir() {
-        // TODO 2.5: načtěte lety ve vzduchu pomocí vaší nové metody ve FlightRepository
-        // Tip: Můžete použít Java 8 Stream API pro konverzi na Transfer Object (TO)
-        return new ArrayList<>();
+        return flightRepository.findAllByLandingTimeNullOrderByTakeoffTimeAscIdAsc()
+            .stream()
+            .map(FlightTo::fromEntity)
+            .collect(Collectors.toList());
     }
 
     @Override
