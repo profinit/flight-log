@@ -23,7 +23,6 @@ class ClubDatabaseDaoImplTest {
     private ClubDatabaseDao testSubject;
 
     // TODO 5.3: odstraňte @Disabled a spusťte test proti testovacímu prostředí ClubDB.
-    @Disabled("Test is ignored because it requires clubDB server to run.")
     @Test
     void getUsers() {
         List<User> users = testSubject.getUsers();
