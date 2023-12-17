@@ -22,7 +22,6 @@ class ClubDatabaseDaoImplTest {
     @Autowired
     private ClubDatabaseDao testSubject;
 
-    // TODO 5.3: odstraňte @Disabled a spusťte test proti testovacímu prostředí ClubDB.
     @Test
     void getUsers() {
         List<User> users = testSubject.getUsers();

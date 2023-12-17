@@ -36,7 +36,6 @@ public class FlightRepositoryTest extends AbstractIntegrationTest {
 
     @Test
     public void shouldLoadFlightsInTheAir() {
-        // TODO 2.4 (DONE): Doplňte název testované metody a smažte anotaci @Disabled
         List<Flight> flights = testSubject.findAllByLandingTimeNullOrderByTakeoffTimeAscIdAsc();// testSubject.*
         
         assertEquals(3, flights.size(), "There should be 3 flights");

@@ -18,7 +18,6 @@ public class ClubDatabaseDaoImpl implements ClubDatabaseDao {
     private final RestTemplate restTemplate;
     private final String clubDbBaseUrl;
 
-    // TODO 5.2(DONE): načtěte property integration.clubDb.baseUrl z application.properties (hint: CsvExportServiceImpl)
     public ClubDatabaseDaoImpl(
         @Value("${integration.clubDb.baseUrl}") String clubDbBaseUrl) {
         this.restTemplate = new RestTemplate();
@@ -29,7 +28,6 @@ public class ClubDatabaseDaoImpl implements ClubDatabaseDao {
     public List<User> getUsers() {
         User[] userList;
         try {
-            // TODO 5.3(DONE): implementujte tělo volání endpointu ClubDB pomocí REST template
             userList = restTemplate.getForObject(clubDbBaseUrl + "/club/user", User[].class);
             return Arrays.asList(userList);
 

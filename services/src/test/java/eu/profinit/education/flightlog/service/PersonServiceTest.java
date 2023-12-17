@@ -88,10 +88,9 @@ class PersonServiceTest {
         assertSame(clubMemberFromDd, person, "Should return prepared instance");
     }
 
-    @Disabled("Test is not implemented")
+
     @Test
     void shouldCreateNewClubMember() {
-        // TODO 7.1(DONE): Naimplementujte unit test s pouzitim mock,
         //prep data
         String testName = "test_name";
         String testLastName = "test_last_name";

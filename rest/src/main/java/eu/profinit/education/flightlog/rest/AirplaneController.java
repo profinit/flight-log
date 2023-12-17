@@ -16,8 +16,6 @@ public class AirplaneController {
 
     private final AirplaneService airplaneService;
 
-    // TODO 3.1 (DONE) : Vystavte REST endpoint vracející seznam klubových letadel
-
     @GetMapping("/airplane")
     public List<AirplaneTo> getClubAirplanes() {
         return airplaneService.getClubAirplanes();
