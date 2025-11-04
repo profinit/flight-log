@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.client.RestClient;
 
 import eu.profinit.education.flightlog.common.exceptions.ExternalSystemException;
 
@@ -14,24 +14,24 @@ import eu.profinit.education.flightlog.common.exceptions.ExternalSystemException
 @Profile("!stub")
 public class ClubDatabaseDaoImpl implements ClubDatabaseDao {
 
-    private final RestTemplate restTemplate;
-    private final String clubDbBaseUrl;
+    private final RestClient restClient;
 
-    // TODO 5.2: načtěte property integration.clubDb.baseUrl z application.properties (hint: CsvExportServiceImpl)
+    // TODO 3.2: načtěte property integration.clubDb.baseUrl z application.properties (hint: CsvExportServiceImpl)
     public ClubDatabaseDaoImpl() {
-        this.restTemplate = new RestTemplate();
-       this.clubDbBaseUrl = null;
+        this.restClient = RestClient.builder()
+          .baseUrl("https://clubdb.example.com/api") // placeholder, nahraďte skutečnou URL z properties
+                .build();
     }
 
     @Override
     public List<User> getUsers() {
         User[] userList;
         try {
-            // TODO 5.3: implementujte tělo volání endpointu ClubDB pomocí REST template
+            // TODO 3.3: implementujte tělo volání endpointu ClubDB pomocí REST client get() metody
             userList = new User[]{};
 
         } catch (RuntimeException e) {
-            throw new ExternalSystemException("Cannot get users from Club database. URL: {}. Call resulted in exception.", e, clubDbBaseUrl);
+            throw new ExternalSystemException("Cannot get users from Club database, call resulted in exception.", e);
         }
         return Arrays.asList(userList);
     }

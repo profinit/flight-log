@@ -88,11 +88,4 @@ class PersonServiceTest {
         // verify results
         assertSame(clubMemberFromDd, person, "Should return prepared instance");
     }
-
-    @Disabled("Test is not implemented")
-    @Test
-    void shouldCreateNewClubMember() {
-        // TODO 7.1: Naimplementujte unit test s pouzitim mocku
-    }
-
 }

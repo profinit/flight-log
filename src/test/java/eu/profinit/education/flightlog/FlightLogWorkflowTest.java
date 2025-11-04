@@ -32,7 +32,7 @@ class FlightLogWorkflowTest extends IntegrationTestBase{
     @Autowired
     private TestRestTemplate restTemplate;
 
-    // TODO: 2.6 Smažte disabled a spusťte test po implementaci FlightService.getFlightsInTheAir
+    // TODO 2.6 Smažte disabled a spusťte test po implementaci FlightService.getFlightsInTheAir
     @Disabled("Method /flight/inAir is not implemented at service layer")
     @Test
     void flightsInAirAndLanding() throws Exception {

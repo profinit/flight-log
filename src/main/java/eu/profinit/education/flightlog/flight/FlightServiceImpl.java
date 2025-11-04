@@ -111,7 +111,7 @@ public class FlightServiceImpl implements FlightService {
 
     @Override
     public List<FlightTuppleTo> getFlightsForReport() {
-        // TODO 8.2: Nactete dvojice letu pro obrazovku report
+        // TODO 5.2: Nactete dvojice letu pro obrazovku report
         return new ArrayList<>();
     }
 }

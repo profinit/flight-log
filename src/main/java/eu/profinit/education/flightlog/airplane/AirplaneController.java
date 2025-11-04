@@ -10,9 +10,10 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequiredArgsConstructor
 public class AirplaneController {
+    private final AirplaneService flightService;
 
-    // TODO 3.1: Vystavte REST endpoint vracející seznam klubových letadel
-    // Tip: letadla získáte voláním AirplaneService
-    // Tip: bude se volat metoda GET na /airplane
-    // Tip: struktura odpovědi je dána objektem AirplaneTo
+    @GetMapping("/airplane")
+    public List<AirplaneTo> getClubAirplanes() {
+        return flightService.getClubAirplanes();
+    }
 }
